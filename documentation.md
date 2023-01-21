@@ -8,6 +8,5 @@
     - Sidenav
     - Filters
     - Table
-- login:
-    - Welcome
+- Login:
     - LoginForm
