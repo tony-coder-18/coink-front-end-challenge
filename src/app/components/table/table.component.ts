@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ICharacter } from 'src/app/models/character.interface';
 import { CharacterService } from 'src/app/services/character.service';
 import { take, catchError } from 'rxjs/operators'
@@ -16,10 +16,12 @@ type RequestInfo = {
 })
 export class TableComponent implements OnInit {
 
+  displayedColumns: string[] = ["name", "species", "status"];
+
   // Create a characters list
   charactersList: ICharacter[] = [];
 
-  // Request info
+  // Request info (useful for knowing when the characters navigation begins and ends)
   info: RequestInfo = {
     next: '',
     prev: '',
@@ -80,18 +82,21 @@ export class TableComponent implements OnInit {
     })
   }
 
+  // It will trigger when searching with the filters
   onSearchSubmit(): void {
     this.searchNameValue = this.searchForm.value.searchNameValue ?? '';
     this.searchTypeValue = this.searchForm.value.searchTypeValue ?? '';
     this.searchCharacters();
   }
 
+  // Clean all the filters and show the default information
   cleanFilters(): void {
     this.searchForm.reset();
     this.searchPageValue = 1;
     this.onSearchSubmit();
   }
 
+  // Show the next/prev page os characters
   changePageNumber(pageNumber: number): void {
     if (pageNumber <= 0) {
       pageNumber = 1;
