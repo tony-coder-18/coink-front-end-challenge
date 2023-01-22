@@ -1,1 +1,16 @@
-<p>table works!</p>
+<app-filters></app-filters>
+<h3>Table</h3>
+<label for="nameFilter">Buscar por Nombre</label>
+<input type="text" name="nameFilter" id="nameFilter">
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Status</th>
+    </tr>
+    <tr *ngFor="let character of charactersList" >
+        <td>{{character.name}}</td>
+        <td>{{character.species}}</td>
+        <td>{{character.status}}</td>
+    </tr>
+</table>
