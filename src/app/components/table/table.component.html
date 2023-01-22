@@ -1,8 +1,20 @@
 <app-filters></app-filters>
 <h3>Table</h3>
-<label for="nameFilter">Buscar por Nombre</label>
-<input type="text" name="nameFilter" id="nameFilter">
-<table>
+
+<div>
+    <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit()" >
+        <label for="nameFilter">Buscar por Nombre</label>
+        <input type="text" name="nameFilter" formControlName="searchNameValue" id="nameFilter">
+
+        <label for="nameFilter">Buscar por Tipo</label>
+        <input type="text" name="typeFilter" formControlName="searchTypeValue" id="typeFilter">
+
+        <button (click)="cleanFilters()" >Limpiar Filtros</button>
+        <input type="submit" value="Buscar">
+    </form>
+</div>
+
+<table *ngIf="charactersList.length > 0">
     <tr>
         <th>Nombre</th>
         <th>Tipo</th>
@@ -14,3 +26,12 @@
         <td>{{character.status}}</td>
     </tr>
 </table>
+
+<div *ngIf="charactersList.length <= 0">
+    No encontramos ninguna tarjeta con esa información.
+</div>
+
+<div>
+    <button (click)="changePageNumber(searchPageValue-1)" [disabled]="!info.prev" >Atrás</button>
+    <button (click)="changePageNumber(searchPageValue+1)" [disabled]="!info.next" >Siguiente</button>
+</div>

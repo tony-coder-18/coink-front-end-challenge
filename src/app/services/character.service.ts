@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 // Import the Characters List Mock
 import { CHARACTERS } from '../mocks/characters.mock';
@@ -9,32 +11,25 @@ import { ICharacter } from '../models/character.interface';
 })
 export class CharacterService {
 
-  constructor() { }
+  API_BASE_URL =  "https://rickandmortyapi.com/api/character/";
 
-  getCharacters(): ICharacter[] {
-    return CHARACTERS;
+  // For handling error messages that show up in the Error component
+  private $error = new Subject<string>();
+
+  constructor(private http: HttpClient) { }
+
+  // For handling error messages that show up in the Error component
+  setError(message: string) {
+    this.$error.next(message);
   }
 
-  getCharactersByName(name: string): ICharacter | ICharacter[] | undefined {
-
-    const characters = CHARACTERS.find((character: ICharacter) => character.name === name);
-
-    if (characters) {
-      return characters;
-    } else {
-      return;
-    }
+  getError(): Observable<string> {
+    return this.$error.asObservable();
   }
+  //
 
-  getCharactersByType(species: string): ICharacter | ICharacter[] | undefined {
-
-    const characters = CHARACTERS.find((character: ICharacter) => character.species === species);
-
-    if (characters) {
-      return characters;
-    } else {
-      return;
-    }
+  searchCharacters(name: string = '', type: string = '', page: number = 1) {
+    return this.http.get<ICharacter[]>(`${this.API_BASE_URL}?name=${name}&species=${type}&page=${page}`)
   }
 
 }
