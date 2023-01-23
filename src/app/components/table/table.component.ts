@@ -1,11 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { ICharacter } from 'src/app/models/character.interface';
 import { CharacterService } from 'src/app/services/character.service';
 import { take, catchError } from 'rxjs/operators'
 import { FormBuilder } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 type RequestInfo = {
+  count: number | null,
   next: string | null,
   prev: string | null,
 }
@@ -18,12 +20,13 @@ type RequestInfo = {
 export class TableComponent implements OnInit {
 
   displayedColumns: string[] = ["name", "species", "status"];
-
+  
   // Create a characters list
   charactersList: ICharacter[] = [];
-
+  
   // Request info (useful for knowing when the characters navigation begins and ends)
   info: RequestInfo = {
+    count: 0,
     next: '',
     prev: '',
   };
@@ -58,6 +61,7 @@ export class TableComponent implements OnInit {
       } else {
         this.charactersList = [];
         this.info = {
+          count: 0,
           next: '',
           prev: '',
         }
@@ -67,6 +71,7 @@ export class TableComponent implements OnInit {
         // Did not found any character with that query:
         this.charactersList = [];
         this.info = {
+          count: 0,
           next: '',
           prev: '',
         }
@@ -75,6 +80,7 @@ export class TableComponent implements OnInit {
         this.characterService.setError('Hubo un error en el servidor');
         this.charactersList = [];
         this.info = {
+          count: 0,
           next: '',
           prev: '',
         };

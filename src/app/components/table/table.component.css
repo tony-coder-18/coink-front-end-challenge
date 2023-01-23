@@ -2,9 +2,24 @@ table {
     width: 100%;
 }
 
+.mat-table {
+    width: 100%;
+    max-height: 500px;
+    overflow: auto;
+}
+
 .flex-row {
     display: flex;
     gap: 1rem;
+}
+
+.pagination-row {
+    display: flex;
+    align-items: center;
+}
+
+.spacer {
+    flex: 1 1 auto;
 }
 
 .btn {
@@ -39,5 +54,25 @@ table {
 }
 
 .filters {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+}
+
+.mat-header-row {
+    background-color: #004B40;
+}
+
+.mat-header-cell {
+    color: white
+}
+
+.pag-control-buttons {
+    color: #1EEB00;
+}
+
+.--is-light {
+    color: #929292;
+}
+
+.--is-mb-sm {
+    margin-bottom: 1rem;
 }
