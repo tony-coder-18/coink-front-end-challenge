@@ -1,0 +1,18 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+
+.navbar__logo {
+    width: 12%;
+    display: flex;
+    place-content: center;
+}
+.navbar__logo-img {
+    width: 50%;
+    height: auto;
+}
+
+.green {
+    background-color: #004B40;
+    color: white;
+}

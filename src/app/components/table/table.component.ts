@@ -3,6 +3,7 @@ import { ICharacter } from 'src/app/models/character.interface';
 import { CharacterService } from 'src/app/services/character.service';
 import { take, catchError } from 'rxjs/operators'
 import { FormBuilder } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
 
 type RequestInfo = {
   next: string | null,

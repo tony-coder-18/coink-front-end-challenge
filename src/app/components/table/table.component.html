@@ -1,22 +1,28 @@
-<app-filters></app-filters>
-<h3>Table</h3>
-<mat-slide-toggle>Toggle me!</mat-slide-toggle>
-<div>
+<div class="filters">
     <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit()" >
-        <label for="nameFilter">Buscar por Nombre</label>
-        <input type="text" name="nameFilter" formControlName="searchNameValue" id="nameFilter">
 
-        <label for="nameFilter">Buscar por Tipo</label>
-        <input type="text" name="typeFilter" formControlName="searchTypeValue" id="typeFilter">
+        <div class="flex-row">
+          <mat-form-field class="example-full-width">
+            <mat-label>Usuario</mat-label>
+            <input matInput formControlName="searchNameValue" placeholder="Juan" >
+          </mat-form-field>
 
-        <button (click)="cleanFilters()" >Limpiar Filtros</button>
-        <input type="submit" value="Buscar">
+          <mat-form-field class="example-full-width">
+            <mat-label>Buscar por Tipo</mat-label>
+            <input matInput formControlName="searchTypeValue" placeholder="Humano, alien, ..." >
+          </mat-form-field>
+        </div>
+
+        <div class="flex-row">
+          <button class="btn btn--secondary" (click)="cleanFilters()" >Limpiar Filtros</button>
+          <input class="btn btn--primary" type="submit" value="Buscar">
+        </div>
     </form>
 </div>
 
 <!-- Angular Material Table -->
 <div>
-    <table mat-table [dataSource]="charactersList" class="mat-elevation-z8">
+    <table  mat-table [dataSource]="charactersList" class="mat-elevation-z8">
       
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef> Nombre </th>
@@ -33,12 +39,10 @@
           <td mat-cell *matCellDef="let element"> {{element.status}} </td>
         </ng-container>
       
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-header-row  *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 </div>
-  
-
 
 <div *ngIf="charactersList.length <= 0">
     No encontramos ninguna tarjeta con esa información.

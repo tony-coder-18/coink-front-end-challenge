@@ -1,0 +1,22 @@
+main {
+    background-color: #F2F2F2;
+    padding-top: 2.5rem;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.container {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.breadcrum {
+    font-weight: bold;
+}
+
+.--is-txt-green {
+    color: #004B40;
+}

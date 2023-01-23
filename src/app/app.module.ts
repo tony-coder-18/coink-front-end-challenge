@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatTableModule } from '@angular/material/table';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -13,7 +12,6 @@ import { DashboardPageComponent } from './components/pages/dashboard-page/dashbo
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { TableComponent } from './components/table/table.component';
-import { FiltersComponent } from './components/table/filters/filters.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { ErrorComponent } from './components/error/error.component';
 import { MaterialModule } from './modules/material/material.module';
@@ -26,7 +24,6 @@ import { MaterialModule } from './modules/material/material.module';
     NavbarComponent,
     SidenavComponent,
     TableComponent,
-    FiltersComponent,
     LoginFormComponent,
     ErrorComponent,
   ],
@@ -36,9 +33,7 @@ import { MaterialModule } from './modules/material/material.module';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaterialModule,
-    MatSlideToggleModule,
-    MatTableModule
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
