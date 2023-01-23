@@ -10,7 +10,7 @@ to filter them out by their name and type (species).
 ## Live Web App
 
 I deployed the app using Netlify, so you can find the live web app in 
-`https://rick-morty-bank-cards.netlify.app/`.
+[`https://rick-morty-bank-cards.netlify.app/`](https://rick-morty-bank-cards.netlify.app/).
 
 Take a look and quickly test the app!
 
