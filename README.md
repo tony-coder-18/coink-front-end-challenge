@@ -5,6 +5,8 @@ the Rick and Morty Api to get all the characters
 show them in a table and
 to filter them out by their name and type (species).
 
+![](https://github.com/tony-coder-18/coink-front-end-challenge/blob/main/src/assets/demo-rick-y-morty-angular-app-coink.gif)
+
 ## Live Web App
 
 I deployed the app using Netlify, so you can find the live web app in 
